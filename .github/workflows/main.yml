@@ -61,8 +61,10 @@ jobs:
       - name: install bake
         run: |
           ./setup.bat
+        shell: cmd
 
       - name: build examples
         run: |
           call "%VSINSTALLDIR%\\VC\\Auxiliary\\Build\\vcvarsall.bat" x64
           ./bake examples --strict
+        shell: cmd
