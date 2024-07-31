@@ -52,7 +52,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: ilammy/msvc-dev-cmd@v1
+
+      - name: debug
+        run: |
+          set
+        shell: cmd
 
       - name: install bake
         run: |
@@ -60,9 +64,5 @@ jobs:
 
       - name: build examples
         run: |
+          call "%VSINSTALLDIR%\\VC\\Auxiliary\\Build\\vcvarsall.bat" x64
           ./bake examples --strict
-
-      - name: debug
-        run: |
-          set
-        shell: cmd
