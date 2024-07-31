@@ -10,6 +10,17 @@ set VSDIR=%VSINSTALLDIR%
 
 rem If not in visual studio prompt, find visual studio installation
 if "%VSDIR%"=="" (
+    for /l %%v in (2050, -1, 2022) do (
+        if "%VSDIR%"=="" (
+          if exist "C:\Program Files\Microsoft Visual Studio\%%v\Enterprise\" (
+              set VSDIR=C:\Program Files\Microsoft Visual Studio\%%v\Enterprise
+          )
+        )
+    )
+)
+
+rem If not found, try community edition
+if "%VSDIR%"=="" (
     for /l %%v in (2050, -1, 2015) do (
         if "%VSDIR%"=="" (
           if exist "C:\Program Files\Microsoft Visual Studio\%%v\Community\" (
