@@ -61,4 +61,8 @@ jobs:
       - name: build examples
         run: |
           ./bake examples --strict
-          echo set
+
+      - name: debug
+        run: |
+          set
+        shell: cmd
